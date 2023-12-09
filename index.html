@@ -1,0 +1,124 @@
+script.js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Not to do list</title>
+  </head>
+  <body>
+    <div class="wrapper mvh-100">
+      <div class="container">
+        <!-- top title  -->
+
+        <h1 class="text-center pt-5">Not To Do List</h1>
+
+        <!-- form  -->
+        <form action="javascript:void(0)" onsubmit="handleOnSubmit(this)">
+          <div class="row g-2 border mt-5 p-5 rounded shadow-lg">
+            <div class="col-md-7">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="task"
+                aria-label="task"
+                required
+                id="task"
+                name="task"
+              />
+            </div>
+            <div class="col-md-2">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="40"
+                aria-label="40"
+                required
+                id="hr"
+                name="hr"
+              />
+            </div>
+            <div class="col-md-3 d-grid">
+              <button class="btn btn-primary">Add New Task</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- table -->
+        <div class="row mt-5">
+          <!-- 1. entry list -->
+          <div class="col-md">
+            <h3 class="text-center">Entry list</h3>
+            <hr />
+            <table class="table border table-striped table-hover">
+              <tbody id="entryList"></tbody>
+            </table>
+          </div>
+          <!-- 2. bad list item  -->
+          <div class="col-md">
+            <h3 class="text-center">Bad list</h3>
+            <hr />
+            <table class="table border table-striped table-hover">
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Watching Tv</td>
+                  <td>20hr</td>
+                  <td class="text-end">
+                    <button class="btn btn-warning btn-sm">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="alert alert-success">
+              You could have save 40hr last week
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-success">The total hours allocated = 40hr</div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
