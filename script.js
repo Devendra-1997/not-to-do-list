@@ -16,6 +16,10 @@ const handleOnSubmit = (form) => {
     type: "entry",
     id: randomIdGenerator(),
   };
+  const getArgTtl = totalAllocation();
+  if (getArgTtl + hr > hrWkly) {
+    return alert("Sorry boss, not enought time left to fit this task");
+  }
   taskList.push(obj);
   display();
 };
@@ -47,6 +51,37 @@ const display = () => {
   });
 
   entryListElm.innerHTML = str;
+  totalAllocation();
+};
+const displayBadList = () => {
+  let str = "";
+  const badList = taskList.filter((item) => item.type === "bad");
+
+  badList.forEach((item, i) => {
+    str += `
+ <tr>
+ <td>${i + 1}</td>
+ <td>${item.task}</td>
+ <td>${item.hr}hr</td>
+ <td class="text-end">
+   
+   <button
+   onclick="switchTask('${item.id}', 'entry')"
+   class="btn btn-warning btn-sm">
+     <i class="fa-solid fa-arrow-left"></i>
+   </button>
+   <button onclick = "handleOnDelete('${
+     item.id
+   }')"  class="btn btn-danger btn-sm">
+     <i class="fa-solid fa-trash"></i>
+   </button>
+ </td>
+</tr>`;
+  });
+
+  badListElm.innerHTML = str;
+  const ttlHrs = badList.reduce((subTtl, item) => subTtl + item.hr, 0);
+  document.getElementById("badHrs").innerText = ttlHrs;
 };
 
 const randomIdGenerator = () => {
@@ -76,4 +111,22 @@ const switchTask = (id, type) => {
   });
 
   display();
+  displayBadList();
+};
+
+const handleOnDelete = (id) => {
+  // delete item form the array
+
+  if (window.confirm("Are you sure do you want to delte this item?")) {
+    taskList = taskList.filter((item) => item.id !== id);
+
+    display();
+    displayBadList();
+  }
+};
+
+const totalAllocation = () => {
+  const ttlHrs = taskList.reduce((acc, item) => acc + item.hr, 0);
+  document.getElementById("totlHrs").innerText = ttlHrs;
+  return ttlHrs;
 };
