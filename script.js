@@ -1,6 +1,8 @@
 // 1. get data from the form and store in global variabl
 let taskList = [];
 const entryListElm = document.getElementById("entryList");
+const badListElm = document.getElementById("badList");
+const hrWkly = 24 * 7;
 const handleOnSubmit = (form) => {
   //   console.log("you have submited the fomr", form);
   //   const task = document.getElementById("task").value;
@@ -38,7 +40,9 @@ const display = () => {
  <td>${item.task}</td>
  <td>${item.hr}hr</td>
  <td class="text-end">
-   <button  class="btn btn-danger btn-sm">
+   <button onclick = "handleOnDelete('${
+     item.id
+   }')" class="btn btn-danger btn-sm">
      <i class="fa-solid fa-trash"></i>
    </button>
    <button
