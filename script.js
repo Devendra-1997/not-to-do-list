@@ -10,7 +10,7 @@ const handleOnSubmit = (form) => {
 
   const newForm = new FormData(form);
   const task = newForm.get("task");
-  const hr = newForm.get("hr");
+  const hr = +newForm.get("hr");
 
   const obj = {
     task,
@@ -26,7 +26,7 @@ const handleOnSubmit = (form) => {
   display();
 };
 
-//2. reate table row with data and display in the UI
+//2. create table row with data and display in the UI
 
 const display = () => {
   console.log(taskList);
